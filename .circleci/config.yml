@@ -6,7 +6,10 @@ version: 2.1
 
 jobs:
   print_name:
-    - run: echo $myname
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo $MYNAME
 
   print_hello:
     docker:
