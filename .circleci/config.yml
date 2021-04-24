@@ -5,6 +5,9 @@ version: 2.1
 # Orchestrate or schedule a set of jobs
 
 jobs:
+  print_name:
+    - run: echo $myname
+
   print_hello:
     docker:
       - image: circleci/node:13.8.0
@@ -24,8 +27,9 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      
       - print_hello
       - print_world:
           requires: 
           - print_hello
+      - print_name
